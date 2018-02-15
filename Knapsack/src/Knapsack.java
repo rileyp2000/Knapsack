@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  * @author rileyp
@@ -11,14 +14,32 @@ public class Knapsack {
 		else {
 			int excLast = knapsackSumA(w,n-1,limit);
 			int incLast = knapsackSumA(w,n-1,limit - w[n]);
-			return Math.max(excLast, incLast) + w[n];
+			if(Math.max(incLast, excLast) == excLast)
+				return incLast + w[n];
+			else
+				return excLast;
+		}
+	}
+	
+	public static int knapsackSumB(int[] w, int n, int limit,List<Integer> list) {
+		if(n<0 || w[n] > limit)
+			return 0;
+		else {
+			int excLast = knapsackSumB(w,n-1,limit,new ArrayList<Integer>());
+			int incLast = knapsackSumB(w,n-1,limit - w[n],new ArrayList<Integer>());
+			if(Math.max(incLast, excLast) == excLast) {
+				list.add(excLast);
+				return incLast + w[n];
+			}else
+				return excLast;
 		}
 	}
 	
 	public static void main(String[] args) {
-		Knapsack k = new Knapsack();
-		int[] w = new int[] {3,4,5,};
+		List<Integer> list = new ArrayList<Integer>();
+		int[] w = new int[] {3,4,5,2,7,1};
 		int limit = 11;
-		System.out.println(knapsackSumA(w,2,limit));
+		System.out.println(knapsackSumB(w,5,limit,list));
+		
 	}
 }
