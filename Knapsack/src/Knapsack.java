@@ -31,24 +31,24 @@ public class Knapsack {
 			
 			//Lists to add
 			List<Integer> list1 = new ArrayList<Integer>();
-			list1.addAll(list);
+			
 			List<Integer> list2 = new ArrayList<Integer>();
-			list2.addAll(list);
+			
 			list2.add(w[n]);
 			
-			int excLast = knapsackSumA(w,n-1,limit);
+			int excLast = knapsackSumB(w,n-1,limit, list1);
 			
-			int incLast = w[n] + knapsackSumA(w,n-1,limit - w[n]);
+			int incLast = w[n] + knapsackSumB(w,n-1,limit - w[n], list2);
 			
 			if(Math.max(incLast, excLast) == incLast) {
-			
-				list2.add(w[n]);
-				list = list
+				
+				list.addAll(list2);
 				return incLast;
 			
-			}else
-				
+			}else {
+				list.addAll(list1);
 				return excLast;
+			}
 		}
 	}
 	
