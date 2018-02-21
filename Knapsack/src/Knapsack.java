@@ -4,10 +4,20 @@ import java.util.List;
 /**
  * 
  * @author rileyp
+ * This is the class for the knapsack programming assignment
  *
  */
 public class Knapsack {
 	
+	/**
+	 * 
+	 * @param w List of weights
+	 * @param n What stage you are currently at
+	 * @param limit The limit of weights you can carry in the knapsack
+	 * @return int the optimal weight of the knapsack
+	 *
+	 *
+	 */
 	public static int knapsackSumA(int[] w, int n, int limit) {
 		if(n<0 || w[n] > limit)
 			return 0;
@@ -23,7 +33,16 @@ public class Knapsack {
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @param w List of weights
+	 * @param n What stage you are currently at
+	 * @param limit The limit of weight you can carry in the knapsack
+	 * @param list A list of the objects in the knapsack
+	 * @return int the optimal weight of the knapsack
+	 *
+	 *
+	 */
 	public static int knapsackSumB(int[] w, int n, int limit, List<Integer> list) {
 		if(n<0 || w[n] > limit)
 			return 0;
@@ -53,48 +72,6 @@ public class Knapsack {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	public static int knapsackSumB(int[] w, int n, int limit,List<Integer> list) {
-		//int weight = w[n];
-		if(n<0 || w[n] > limit)
-			return 0;
-		else {
-			
-			//Lists to add
-			List<Integer> list1 = new ArrayList<Integer>();
-			list1.addAll(list);
-			List<Integer> list2 = new ArrayList<Integer>();
-			list2.addAll(list);
-			
-			//gets value, excluding the last element
-			int excLast = knapsackSumB(w,n-1,limit,list1);
-			
-			//adds weight of nth item to the list
-			list2.add(w[n]);
-			
-			//gets value, including the last element
-			int incLast = w[n] + knapsackSumB(w,n-1,limit - w[n],list2);
-			
-			
-			if(incLast >= excLast) {
-				
-				list.add(w[n]);
-				return incLast;
-				
-			}else
-				
-				return excLast;
-		}
-	}
-	*/
 	public static void main(String[] args) {
 		List<Integer> list = new ArrayList<Integer>();
 		
