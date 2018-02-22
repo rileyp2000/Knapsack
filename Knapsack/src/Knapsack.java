@@ -107,12 +107,49 @@ public class Knapsack {
 		while (allFiles.hasNextLine()) {
 			fileNames.add(allFiles.nextLine().trim());
 		}
-
+		keyboard.close();
+		allFiles.close();
 		return fileNames;
 	}
-	
-	
-	
+
+	public static void formatPrint(PrintWriter out, int limit, List<Integer> usedWeights, int optimal, int[] w) {
+		out.print(" " + limit + "\t");
+		
+		for(int i = 0; i < w.length-1; i++) 
+			out.print(w[i] + ", ");
+		out.print(w[w.length-1]);
+		
+		out.println();
+		
+		for(Integer i : w) {
+			if(usedWeights.contains(i))
+				out.println(1 + " " + i + " pound watermelons");
+			else
+				out.println(0 + " " + i + " pound watermelons");
+		}
+		
+		out.println("\n");
+	}
+
+	public static void processFile(PrintWriter out, Scanner f) {
+		String limit = f.nextLine().trim();
+		int lim = Integer.parseInt(limit);
+
+		ArrayList<Integer> weights = new ArrayList<Integer>();
+		while (f.hasNextLine()) {
+			weights.add(Integer.parseInt(f.nextLine().trim()));
+		}
+		int[] w = new int[weights.size()];
+		for (int i = 0; i < weights.size(); i++)
+			w[i] = weights.get(i);
+
+		List<Integer> usedWeights = new ArrayList<Integer>();
+		int optimal = knapsackSumB(w, w.length - 1, lim, usedWeights);
+
+		formatPrint(out, lim,usedWeights, optimal, w);
+
+	}
+
 	public static void main(String[] args) {
 
 		ArrayList<String> fileNames = getFileNames(args);
@@ -122,34 +159,33 @@ public class Knapsack {
 			out = new PrintWriter(new File("knapsack.txt"));
 		} catch (FileNotFoundException e) {
 			System.out.println("Output file Error!");
+			System.exit(1);
 		}
-		
-		
-		for(String file : fileNames) {
-			out.println(file);
-			Scanner f = null;
-			try {
-				f = new Scanner(new File(file));
-			} catch(FileNotFoundException e) {
-				out.print("File Missing");
-				System.exit(0);
+
+		for (String file : fileNames) {
+			if (!file.equals("")) {
+				out.println(file);
+				Scanner f = null;
+				try {
+					f = new Scanner(new File(file));
+				} catch (FileNotFoundException e) {
+					out.print("File Missing");
+					System.exit(1);
+				}
+
+				// Process the file
+				processFile(out, f);
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		List<Integer> list = new ArrayList<Integer>();
+
+		/*List<Integer> list = new ArrayList<Integer>();
 
 		int[] w = new int[] { 3, 4, 5, 2, 7, 1 };
 		int limit = 11;
 		System.out.println(knapsackSumA(w, 5, limit));
 
 		System.out.println(knapsackSumB(w, 5, limit, list));
-		System.out.println(list);
+		System.out.println(list);*/
 
 	}
 }
