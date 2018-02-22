@@ -111,7 +111,17 @@ public class Knapsack {
 		allFiles.close();
 		return fileNames;
 	}
-
+	
+	/**
+	 * Formats printing for the file
+	 * @param out
+	 * @param limit
+	 * @param usedWeights
+	 * @param optimal
+	 * @param w
+	 *
+	 *void
+	 */
 	public static void formatPrint(PrintWriter out, int limit, List<Integer> usedWeights, int optimal, int[] w) {
 		out.print(" " + limit + "\t");
 		
@@ -130,7 +140,14 @@ public class Knapsack {
 		
 		out.println("\n");
 	}
-
+	
+	/**
+	 * Does all the knapsack stuff for the given file
+	 * @param out the PrintWriter for the output file
+	 * @param f Scanner for the print file
+	 *
+	 *void
+	 */
 	public static void processFile(PrintWriter out, Scanner f) {
 		String limit = f.nextLine().trim();
 		int lim = Integer.parseInt(limit);
