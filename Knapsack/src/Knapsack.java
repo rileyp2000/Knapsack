@@ -136,9 +136,10 @@ public class Knapsack {
 		int lim = Integer.parseInt(limit);
 
 		ArrayList<Integer> weights = new ArrayList<Integer>();
-		while (f.hasNextLine()) {
+		
+		while (f.hasNextLine()) 
 			weights.add(Integer.parseInt(f.nextLine().trim()));
-		}
+		
 		int[] w = new int[weights.size()];
 		for (int i = 0; i < weights.size(); i++)
 			w[i] = weights.get(i);
@@ -164,7 +165,7 @@ public class Knapsack {
 
 		for (String file : fileNames) {
 			if (!file.equals("")) {
-				out.println(file);
+				out.print(file);
 				Scanner f = null;
 				try {
 					f = new Scanner(new File(file));
@@ -176,6 +177,8 @@ public class Knapsack {
 				// Process the file
 				processFile(out, f);
 			}
+			
+		out.close();
 		}
 
 		/*List<Integer> list = new ArrayList<Integer>();
