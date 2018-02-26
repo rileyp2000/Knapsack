@@ -1,1 +1,6 @@
 watermelon test 1.txt
+watermelon test 2.txt
+watermelon test 3.txt
+watermelon test 4.txt
+watermelon test 5.txt
+watermelon test 6.txt

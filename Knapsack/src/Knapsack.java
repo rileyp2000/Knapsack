@@ -192,6 +192,10 @@ public class Knapsack {
 		for (int i = 0; i < weights.size(); i++)
 			w[i] = weights.get(i);
 		
+		if(w.length == 0){
+			out.println("No valid Weights for limit " + limit + ", you have an empty knapsack :(");
+			return;
+		}
 		
 		//does knapsack problem, and gets new weights
 		List<Integer> usedWeights = new ArrayList<Integer>();
