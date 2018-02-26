@@ -1,0 +1,86 @@
+knapsackTest01.txt 250 	8, 9, 190, 12, 13, 4
+1 8 pound watermelons
+1 9 pound watermelons
+1 190 pound watermelons
+1 12 pound watermelons
+1 13 pound watermelons
+1 4 pound watermelons
+
+
+knapsackTest02.txt 6 	8, 9, 190, 12, 13, 4
+0 8 pound watermelons
+0 9 pound watermelons
+0 190 pound watermelons
+0 12 pound watermelons
+0 13 pound watermelons
+1 4 pound watermelons
+
+
+knapsackTest03.txt 31 	48, 12, 9, 3, 2, 6, 5
+0 48 pound watermelons
+1 12 pound watermelons
+1 9 pound watermelons
+1 3 pound watermelons
+1 2 pound watermelons
+0 6 pound watermelons
+1 5 pound watermelons
+
+
+knapsackTest04.txt 31 	5, 6, 2, 3, 9, 12, 48
+1 5 pound watermelons
+0 6 pound watermelons
+1 2 pound watermelons
+1 3 pound watermelons
+1 9 pound watermelons
+1 12 pound watermelons
+0 48 pound watermelons
+
+
+knapsackTest05.txt 25 	5, 6, 2, 3, 9, 12, 48
+1 5 pound watermelons
+1 6 pound watermelons
+1 2 pound watermelons
+0 3 pound watermelons
+0 9 pound watermelons
+1 12 pound watermelons
+0 48 pound watermelons
+
+
+knapsackTest06.txt 50 	5, 8, 6, 8, 2, 3, 9, 10, 11, 12, 48
+0 5 pound watermelons
+0 8 pound watermelons
+0 6 pound watermelons
+0 8 pound watermelons
+1 2 pound watermelons
+0 3 pound watermelons
+0 9 pound watermelons
+0 10 pound watermelons
+0 11 pound watermelons
+0 12 pound watermelons
+1 48 pound watermelons
+
+
+knapsackTest07.txt Empty File!!
+
+
+knapsackTest08.txtNo valid Weights for limit 10, you have an empty knapsack :(
+
+
+knapsackTest09.txt 5 	9, 8, 7, 6, 1, 5
+0 9 pound watermelons
+0 8 pound watermelons
+0 7 pound watermelons
+0 6 pound watermelons
+0 1 pound watermelons
+1 5 pound watermelons
+
+
+knapsackTest10.txt 5 	5, 1, 6, 7, 8, 9
+1 5 pound watermelons
+0 1 pound watermelons
+0 6 pound watermelons
+0 7 pound watermelons
+0 8 pound watermelons
+0 9 pound watermelons
+
+

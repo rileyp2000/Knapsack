@@ -61,10 +61,10 @@ public class Knapsack {
 	 */
 	public static int knapsackSumB(int[] w, int n, int limit, List<Integer> list) {
 		//base case
-		if (n < 0 || w[n] > limit)
+		if (n < 0 /*|| w[n] > limit*/)
 			return 0;
 		else {
-
+			
 			// Lists to add
 			List<Integer> list1 = new ArrayList<Integer>();
 
@@ -77,6 +77,10 @@ public class Knapsack {
 			int excLast = knapsackSumB(w, n - 1, limit, list1);
 			int incLast = w[n] + knapsackSumB(w, n - 1, limit - w[n], list2);
 			
+			if(w[n] > limit){
+				list.addAll(list1);
+				return excLast;
+			}
 			//if including is greater, add the values including the current to the main list
 			if (Math.max(incLast, excLast) == incLast) {
 				list.addAll(list2);
@@ -189,8 +193,11 @@ public class Knapsack {
 		//get list of weights
 		ArrayList<Integer> weights = new ArrayList<Integer>();
 		
-		while (f.hasNextLine()) 
-			weights.add(Integer.parseInt(f.nextLine().trim()));
+		while (f.hasNextLine() && f.hasNextInt()){ 
+			String nxtLn = f.nextLine();
+			if(!nxtLn.equals(""))
+				weights.add(Integer.parseInt(nxtLn.trim()));
+		}
 		
 		//converts list to array
 		int[] w = new int[weights.size()];
@@ -205,7 +212,7 @@ public class Knapsack {
 		//does knapsack problem, and gets new weights
 		List<Integer> usedWeights = new ArrayList<Integer>();
 		int optimal = knapsackSumB(w, w.length - 1, lim, usedWeights);
-		
+		System.out.println(optimal);
 		//sends info to be formatted and printed to file
 		formatPrint(out, lim,usedWeights, optimal, w);
 
@@ -226,19 +233,20 @@ public class Knapsack {
 		System.out.println(fileNames);
 		//Does whole process for each file
 		for (String file : fileNames) {
-			//System.out.println("Working on: " + file);
+			System.out.println("Working on: " + file);
 			if (!file.equals("")) {
-				out.print(file);
 				
 				//creates scanner for file
 				Scanner f = null;
 				try {
 					f = new Scanner(new File(file));
 				} catch (FileNotFoundException e) {
-					out.print("File Missing");
-					System.exit(1);
+					System.out.println("File Missing: " + file);
+					continue;
 				}
-
+				
+				out.print(file);
+				
 				// Process the file
 				processFile(out, f);
 				//System.out.println("Finished processing file: " + file);
