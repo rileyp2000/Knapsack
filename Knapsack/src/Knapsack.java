@@ -28,12 +28,15 @@ public class Knapsack {
 	 */
 	public static int knapsackSumA(int[] w, int n, int limit) {
 		//base case
-		if (n < 0 || w[n] > limit)
+		if (n < 0)
 			return 0;
 		else {
 			//recursively calculates including last, and excluding last
 			int excLast = knapsackSumA(w, n - 1, limit);
 			int incLast = w[n] + knapsackSumA(w, n - 1, limit - w[n]);
+			
+			if(w[n] > limit)
+				return excLast;
 			
 			//returns whichever is greater
 			if (Math.max(incLast, excLast) == incLast)
@@ -61,7 +64,7 @@ public class Knapsack {
 	 */
 	public static int knapsackSumB(int[] w, int n, int limit, List<Integer> list) {
 		//base case
-		if (n < 0 /*|| w[n] > limit*/)
+		if (n < 0 )
 			return 0;
 		else {
 			
