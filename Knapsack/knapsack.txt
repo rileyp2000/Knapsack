@@ -63,7 +63,7 @@ knapsackTest06.txt 50 	5, 8, 6, 8, 2, 3, 9, 10, 11, 12, 48
 knapsackTest07.txt Empty File!!
 
 
-knapsackTest08.txtNo valid Weights for limit 10, you have an empty knapsack :(
+knapsackTest08.txt No valid Weights for limit 10, you have an empty knapsack :(
 
 
 knapsackTest09.txt 5 	9, 8, 7, 6, 1, 5
