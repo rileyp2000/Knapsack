@@ -145,7 +145,7 @@ public class Knapsack {
 	 */
 	public static void formatPrint(PrintWriter out, int limit, List<Integer> usedWeights, int optimal, int[] w) {
 		//print limit of problem
-		out.print(" " + limit + "\t");
+		out.print(" " + limit + " \t");
 		
 		//print weights used in problem
 		for(int i = 0; i < w.length-1; i++) 
@@ -177,6 +177,11 @@ public class Knapsack {
 	 *void
 	 */
 	public static void processFile(PrintWriter out, Scanner f) {
+		if(!f.hasNextLine()){
+			out.println(" Empty File!!\n\n");
+			return;	
+		}
+		
 		//gets limit as both string and int
 		String limit = f.nextLine().trim();
 		int lim = Integer.parseInt(limit);
@@ -193,7 +198,7 @@ public class Knapsack {
 			w[i] = weights.get(i);
 		
 		if(w.length == 0){
-			out.println("No valid Weights for limit " + limit + ", you have an empty knapsack :(");
+			out.println("No valid Weights for limit " + limit + ", you have an empty knapsack :(\n\n");
 			return;
 		}
 		
@@ -218,9 +223,10 @@ public class Knapsack {
 			System.out.println("Output file Error!");
 			System.exit(1);
 		}
-		
+		System.out.println(fileNames);
 		//Does whole process for each file
 		for (String file : fileNames) {
+			//System.out.println("Working on: " + file);
 			if (!file.equals("")) {
 				out.print(file);
 				
@@ -235,10 +241,12 @@ public class Knapsack {
 
 				// Process the file
 				processFile(out, f);
+				//System.out.println("Finished processing file: " + file);
 			}
 			
-		out.close();
 		}
+		
+		out.close();
 		
 		/************** OLD TEST **************/
 		
